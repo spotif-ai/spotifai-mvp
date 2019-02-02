@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.media.FaceDetector;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.Landmark;
@@ -24,6 +29,11 @@ import com.google.cloud.vision.v1.BatchAnnotateImagesResponse;
 import com.google.cloud.vision.v1.EntityAnnotation;
 import com.google.cloud.vision.v1.Feature;
 import com.google.cloud.vision.v1.ImageAnnotatorClient;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+import com.google.firebase.ml.vision.face.FirebaseVisionFace;
+import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
+import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
 import com.google.protobuf.ByteString;
 
 import java.io.ByteArrayOutputStream;
@@ -38,6 +48,8 @@ import static android.graphics.Bitmap.CompressFormat.JPEG;
 
 public class testPhotoActivity extends AppCompatActivity {
     ImageView mapImage;
+    TextView smilingProb;
+    FirebaseVisionFaceDetector detector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +61,36 @@ public class testPhotoActivity extends AppCompatActivity {
         mapImage = findViewById(R.id.map_image);
         mapImage.setImageBitmap(imageBitmap);
 
-        FaceDetector detector = new FaceDetector(100,100,1);
+        smilingProb = findViewById(R.id.smiling_prob);
 
-        Canvas canvas = new Canvas();
-        Paint paint = new Paint();
-        Frame frame = new Frame.Builder().setBitmap(imageBitmap).build();
-        Face[] face = {};
-        detector.findFaces(imageBitmap, face);
+        FirebaseVisionFaceDetectorOptions highAccuracyOpts =
+                new FirebaseVisionFaceDetectorOptions.Builder()
+                        .setPerformanceMode(FirebaseVisionFaceDetectorOptions.ACCURATE)
+                        .setLandmarkMode(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
+                        .setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
+                        .build();
+        FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(imageBitmap);
+        detector = FirebaseVision.getInstance().getVisionFaceDetector(highAccuracyOpts);
 
-        for (int i = 0; i < faces.size(); ++i) {
-            Face face = faces.valueAt(i);
-            for (Landmark landmark : face.getLandmarks()) {
-                int cx = (int) (landmark.getPosition().x * 0.1);
-                int cy = (int) (landmark.getPosition().y * 0.1);
-                canvas.drawCircle(cx, cy, 10, paint);
-            }
-        }
+//        Task<List<FirebaseVisionFace>> result =
+//                detector.detectInImage(image)
+//                        .addOnSuccessListener(
+//                                new OnSuccessListener<List<FirebaseVisionFace>>() {
+//                                    @Override
+//                                    public void onSuccess(List<FirebaseVisionFace> faces) {
+//                                        FirebaseVisionFace face = faces.get(0);
+//                                        String prob = String.valueOf(face.getSmilingProbability());
+//                                        smilingProb.setText(prob);
+//                                    }
+//                                })
+//                        .addOnFailureListener(
+//                                new OnFailureListener() {
+//                                    @Override
+//                                    public void onFailure(@NonNull Exception e) {
+//                                        // Task failed with an exception
+//                                        // ...
+//                                    }
+//                                });
 
     }
 
