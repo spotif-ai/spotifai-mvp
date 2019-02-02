@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,9 +30,14 @@ public class MainActivity extends AppCompatActivity {
         splashtitle.startAnimation(fadeOut);
 //        fadeIn.setDuration(1000);
 //        fadeIn.setFillAfter(true);
-        fadeOut.setDuration(2000);
+        fadeOut.setDuration(2500);
         fadeOut.setFillAfter(true);
 //        fadeOut.setStartOffset(4200+fadeIn.getStartOffset());
+
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        );
 
 
         startbutton.setOnClickListener(new View.OnClickListener() {
