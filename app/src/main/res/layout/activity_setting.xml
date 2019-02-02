@@ -8,7 +8,7 @@
     tools:context=".SettingActivity">
 
     <Button
-        android:id="@+id/motivateButton"
+        android:id="@+id/changebutton"
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
         app:layout_constraintVertical_bias="0.803" />
 
     <Button
-        android:id="@+id/stabilizeButton"
+        android:id="@+id/boostbutton"
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:layout_marginStart="8dp"
@@ -38,7 +38,7 @@
         android:background="@drawable/roundbutton"
         android:fontFamily="@font/raleway"
         android:padding="0dp"
-        android:text="REINFORCE"
+        android:text="BOOST"
         android:textColor="@android:color/black"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,8 +58,8 @@
         android:fontFamily="@font/raleway"
         android:text="Do you want to:"
         android:textColor="@android:color/white"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/stabilizeButton"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/boostbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,14 +72,16 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/raleway"
         android:text="or"
-        app:layout_constraintBottom_toTopOf="@+id/motivateButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stabilizeButton"
-        android:textSize="40dp"
         android:textColor="@android:color/white"
-        android:fontFamily="@font/raleway"/>
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/changebutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boostbutton"
+        app:layout_constraintVertical_bias="0.49" />
 
     <TextView
         android:id="@+id/bottomText"
@@ -89,14 +91,14 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/raleway"
         android:text="your mood?"
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/motivateButton"
-        android:textSize="40dp"
-        android:textColor="@android:color/white"
-        android:fontFamily="@font/raleway"/>
+        app:layout_constraintTop_toBottomOf="@+id/changebutton" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -2,19 +2,14 @@ package com.example.spotif_ai;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-
 public class SettingActivity extends AppCompatActivity {
 
-    Button stabilizeButton, motivateButton;
+    Button boostbutton, changebutton;
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
@@ -22,8 +17,8 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        stabilizeButton = findViewById(R.id.stabilizeButton);
-        motivateButton = findViewById(R.id.motivateButton);
+        boostbutton = findViewById(R.id.boostbutton);
+        changebutton = findViewById(R.id.changebutton);
 
 //        stabilizeButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -35,7 +30,15 @@ public class SettingActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        motivateButton.setOnClickListener(new View.OnClickListener() {
+
+        boostbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+            }
+        });
+
+        changebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
@@ -46,6 +49,7 @@ public class SettingActivity extends AppCompatActivity {
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        takePictureIntent.putExtra("android.intent.extras.CAMERA_FACING", 1);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }

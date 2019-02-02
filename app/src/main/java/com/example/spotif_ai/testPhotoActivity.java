@@ -49,23 +49,6 @@ public class testPhotoActivity extends AppCompatActivity {
         mapImage = findViewById(R.id.map_image);
         mapImage.setImageBitmap(imageBitmap);
 
-        FaceDetector detector = new FaceDetector(100,100,1);
-
-        Canvas canvas = new Canvas();
-        Paint paint = new Paint();
-        Frame frame = new Frame.Builder().setBitmap(imageBitmap).build();
-        Face[] face = {};
-        detector.findFaces(imageBitmap, face);
-
-        for (int i = 0; i < faces.size(); ++i) {
-            Face face = faces.valueAt(i);
-            for (Landmark landmark : face.getLandmarks()) {
-                int cx = (int) (landmark.getPosition().x * 0.1);
-                int cy = (int) (landmark.getPosition().y * 0.1);
-                canvas.drawCircle(cx, cy, 10, paint);
-            }
-        }
-
     }
 
 
