@@ -1,16 +1,18 @@
 package com.example.spotif_ai;
 
-import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button settingsButton;
+    boolean isOpen = false;
+    Button startbutton;
+    TextView splashtitle;
 
 
     @Override
@@ -18,17 +20,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        settingsButton =  findViewById(R.id.getstartedbutton);
+        startbutton =  findViewById(R.id.getstartedbutton);
+        splashtitle = findViewById(R.id.splashTitle);
 
-        settingsButton.setOnClickListener(new View.OnClickListener() {
+        AlphaAnimation fadeIn = new AlphaAnimation(1.0f , 0.0f ) ;
+        AlphaAnimation fadeOut = new AlphaAnimation( 0.0f , 1.0f ) ;
+        splashtitle.startAnimation(fadeIn);
+        splashtitle.startAnimation(fadeOut);
+//        fadeIn.setDuration(1000);
+//        fadeIn.setFillAfter(true);
+        fadeOut.setDuration(2000);
+        fadeOut.setFillAfter(true);
+//        fadeOut.setStartOffset(4200+fadeIn.getStartOffset());
+
+
+        startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,SettingActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_up, R.anim.fade_out);
                 finish();
 
             }
         });
 
     }
+
+
 }

@@ -59,9 +59,9 @@ public class SettingActivity extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            Intent intent = new Intent(SettingActivity.this,testPhotoActivity.class);
-            intent.putExtras(extras);
-            startActivity(intent);
+//            Intent intent = new Intent(SettingActivity.this,testPhotoActivity.class);
+//            intent.putExtras(extras);
+//            startActivity(intent);
             finish();
 
         }

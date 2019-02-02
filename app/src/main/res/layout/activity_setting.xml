@@ -78,7 +78,6 @@
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/changebutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/boostbutton"
         app:layout_constraintVertical_bias="0.49" />
