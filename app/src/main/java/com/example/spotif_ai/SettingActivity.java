@@ -7,6 +7,8 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 public class SettingActivity extends AppCompatActivity {
 
     Button boostbutton, stabilizebutton;
@@ -30,6 +32,12 @@ public class SettingActivity extends AppCompatActivity {
 //
 //            }
 //        });
+
+//        TextView smileprobability = new TextView(this);
+//        smileprobability.setText("Some Text");
+
+//        TextView heartrate = new TextView(this);
+//        heartrate.setText("Some Text");
 
         boostbutton.setOnClickListener(new View.OnClickListener() {
             @Override
