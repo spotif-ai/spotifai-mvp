@@ -2,9 +2,6 @@ package com.example.spotif_ai;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +18,7 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         boostbutton = findViewById(R.id.boostbutton);
-        changebutton = findViewById(R.id.changebutton);
+        changebutton = findViewById(R.id.stabilizebutton);
 
 //        stabilizeButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
