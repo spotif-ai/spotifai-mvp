@@ -75,41 +75,5 @@ public class SettingActivity extends AppCompatActivity {
         }
     }
 
-    Button button;
-
-    public void onClick(View v) {
-
-        Drawable drc = getResources().getDrawable(R.drawable.change_button_pressed);
-        Drawable dr = getResources().getDrawable(R.drawable.boost_button_pressed);
-        dr.setColorFilter(Color.parseColor("#FF0000"), PorterDuff.Mode.SRC_ATOP);
-
-        switch (v.getId()) {
-            case R.id.changebutton:
-
-                if (button == null) {
-                    button = (Button) findViewById(v.getId());
-                } else {
-                    button.setBackgroundResource(R.drawable.change_button_pressed);
-                    button = (Button) findViewById(v.getId());
-                }
-                button.setBackgroundDrawable(drc);
-
-                break;
-
-            case R.id.boostbutton:
-                if (button == null) {
-                    button = (Button) findViewById(v.getId());
-                } else {
-                    button.setBackgroundResource(R.drawable.boost_button_pressed);
-                    button = (Button) findViewById(v.getId());
-                }
-                button.setBackgroundDrawable(dr);
-
-                break;
-
-            default:
-                break;
-        }
-    }
 
 }

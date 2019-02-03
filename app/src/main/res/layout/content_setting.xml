@@ -56,7 +56,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/raleway"
-        android:text="Based on your facial expression '  ' you should listen to:"
+        android:text="Based on your facial expression '  ' and heart rate of '  ' bpm, you should listen to:"
         android:textColor="@android:color/white"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/songlink"
