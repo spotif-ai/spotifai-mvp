@@ -2,6 +2,9 @@ package com.example.spotif_ai;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +38,8 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
+                overridePendingTransition(R.anim.slide_up, R.anim.fade_out);
+                finish();
             }
         });
 
@@ -42,8 +47,11 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
+                overridePendingTransition(R.anim.slide_up, R.anim.fade_out);
+                finish();
             }
         });
+
 
     }
 
@@ -64,6 +72,43 @@ public class SettingActivity extends AppCompatActivity {
 //            startActivity(intent);
             finish();
 
+        }
+    }
+
+    Button button;
+
+    public void onClick(View v) {
+
+        Drawable drc = getResources().getDrawable(R.drawable.change_button_pressed);
+        Drawable dr = getResources().getDrawable(R.drawable.boost_button_pressed);
+        dr.setColorFilter(Color.parseColor("#FF0000"), PorterDuff.Mode.SRC_ATOP);
+
+        switch (v.getId()) {
+            case R.id.changebutton:
+
+                if (button == null) {
+                    button = (Button) findViewById(v.getId());
+                } else {
+                    button.setBackgroundResource(R.drawable.change_button_pressed);
+                    button = (Button) findViewById(v.getId());
+                }
+                button.setBackgroundDrawable(drc);
+
+                break;
+
+            case R.id.boostbutton:
+                if (button == null) {
+                    button = (Button) findViewById(v.getId());
+                } else {
+                    button.setBackgroundResource(R.drawable.boost_button_pressed);
+                    button = (Button) findViewById(v.getId());
+                }
+                button.setBackgroundDrawable(dr);
+
+                break;
+
+            default:
+                break;
         }
     }
 

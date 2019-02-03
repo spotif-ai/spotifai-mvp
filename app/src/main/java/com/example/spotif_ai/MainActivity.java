@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         AlphaAnimation fadeOut = new AlphaAnimation( 0.0f , 1.0f ) ;
         splashtitle.startAnimation(fadeIn);
         splashtitle.startAnimation(fadeOut);
+        startbutton.startAnimation(fadeIn);
+        startbutton.startAnimation(fadeOut);
 //        fadeIn.setDuration(1000);
 //        fadeIn.setFillAfter(true);
         fadeOut.setDuration(2500);
