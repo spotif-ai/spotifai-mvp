@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 public class SettingActivity extends AppCompatActivity {
 
-    Button boostbutton, changebutton;
+    Button boostbutton, stabilizebutton;
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
@@ -18,7 +18,7 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         boostbutton = findViewById(R.id.boostbutton);
-        changebutton = findViewById(R.id.stabilizebutton);
+        stabilizebutton = findViewById(R.id.stabilizebutton);
 
 //        stabilizeButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -40,7 +40,7 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        changebutton.setOnClickListener(new View.OnClickListener() {
+        stabilizebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
